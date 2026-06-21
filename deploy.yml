@@ -1,0 +1,10 @@
+- name : Deploy Maven Project
+  hosts : web
+  become : yes
+  tasks :
+    - name : Copy JAR file
+      copy : 
+        src : /var/lib/jenkins/workspace/prog8/target/maven-example-1.0-SNAPSHOT.jar
+        dest : /opt/maven-example-1.0-SNAPSHOT.jar
+    - name : Run Application
+      shell : nohup java-jar /opt/maven-example-1.0-SNAPSHOT.jar&
